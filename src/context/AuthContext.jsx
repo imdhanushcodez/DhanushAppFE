@@ -18,9 +18,11 @@ export const AuthProvider = ({ children }) => {
       try {
         const me = await authApi.getMe();
         setUser(me);
-        setToken('cookie-session');
+        const existingToken = localStorage.getItem('token');
+        const tokenToSet = existingToken && existingToken !== 'cookie-session' ? existingToken : 'cookie-session';
+        setToken(tokenToSet);
         localStorage.setItem('user', JSON.stringify(me));
-        localStorage.setItem('token', 'cookie-session');
+        localStorage.setItem('token', tokenToSet);
       } catch (err) {
         // If not authenticated or backend unavailable, clean up
         if (err.response && err.response.status === 401) {
@@ -62,11 +64,12 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     try {
       const data = await authApi.login({ email, password });
-      // data is { id, email, mobile, name, profilePhotoUrl }
+      // data is { id, email, mobile, name, profilePhotoUrl, token }
       setUser(data);
-      setToken('cookie-session');
+      const authToken = data.token || 'cookie-session';
+      setToken(authToken);
       localStorage.setItem('user', JSON.stringify(data));
-      localStorage.setItem('token', 'cookie-session');
+      localStorage.setItem('token', authToken);
       return { success: true };
     } catch (err) {
       if (!err.response) {
