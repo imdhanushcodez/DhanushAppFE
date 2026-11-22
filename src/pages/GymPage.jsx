@@ -390,7 +390,7 @@ const GymPage = () => {
                 <div>
                   <div className="flex items-start justify-between">
                     <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded">
-                      {w.categoryName || 'Exercise'}
+                      {w.category?.name || w.categoryName || 'Exercise'}
                     </span>
                     <div className="flex items-center space-x-1">
                       <button
@@ -398,7 +398,7 @@ const GymPage = () => {
                           setEditingWorkout(w);
                           setSelectedFile(null);
                           setWorkoutForm({
-                            categoryId: w.categoryId,
+                            categoryId: w.category?.id || w.categoryId || 1,
                             name: w.name,
                             reps: w.reps,
                             weightKg: w.weightKg || '',

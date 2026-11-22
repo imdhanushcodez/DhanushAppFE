@@ -434,7 +434,7 @@ const DietPage = () => {
                           setEditingFood(f);
                           setSelectedFile(null);
                           setFoodForm({
-                            categoryId: f.categoryId,
+                            categoryId: f.category?.id || f.categoryId || 1,
                             dishName: f.dishName,
                             weightG: f.weightG,
                             calories: f.calories,

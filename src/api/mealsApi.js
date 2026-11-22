@@ -23,7 +23,7 @@ export const mealsApi = {
   // US-37: Add food to shared library
   create: async (data) => {
     const res = await axiosClient.post('/foods', {
-      categoryId: Number(data.categoryId || data.category_id),
+      categoryId: Number(data.categoryId || data.category_id || data.category?.id),
       dishName: data.dishName || data.dish_name,
       weightG: Number(data.weightG || data.weight_g),
       calories: Number(data.calories),
@@ -38,7 +38,7 @@ export const mealsApi = {
   // US-39: Update food
   update: async (id, data) => {
     const res = await axiosClient.put(`/foods/${id}`, {
-      categoryId: Number(data.categoryId || data.category_id),
+      categoryId: Number(data.categoryId || data.category_id || data.category?.id),
       dishName: data.dishName || data.dish_name,
       weightG: Number(data.weightG || data.weight_g),
       calories: Number(data.calories),

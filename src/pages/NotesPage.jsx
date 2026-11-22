@@ -37,11 +37,11 @@ const NotesPage = () => {
       }
 
       // Map sortOption
-      if (sortOption === 'oldest') params.sort = 'created_asc';
-      else if (sortOption === 'topic_asc') params.sort = 'topic_asc';
-      else if (sortOption === 'topic_desc') params.sort = 'topic_desc';
-      else if (sortOption === 'updated') params.sort = 'updated_desc';
-      else params.sort = 'created_desc';
+      if (sortOption === 'oldest') params.sort = 'oldest';
+      else if (sortOption === 'topic_asc') params.sort = 'topicAsc';
+      else if (sortOption === 'topic_desc') params.sort = 'topicDesc';
+      else if (sortOption === 'updated') params.sort = 'updated';
+      else params.sort = 'newest';
 
       if (dateFilter !== 'ALL') {
         const now = new Date();
@@ -159,8 +159,8 @@ const NotesPage = () => {
 
   // Import (US-28)
   const handleImportSuccess = (result) => {
-    const imported = result?.importedCount || 0;
-    const skipped = result?.skippedCount || 0;
+    const imported = result?.imported ?? result?.importedCount ?? 0;
+    const skipped = result?.skipped ?? result?.skippedCount ?? 0;
     showToast(`Imported ${imported} note(s), ${skipped} skipped.`);
     loadData();
   };

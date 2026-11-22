@@ -5,6 +5,7 @@ import {
   LayoutDashboard,
   KeyRound,
   FileText,
+  Clapperboard,
   Dumbbell,
   Utensils,
   User,
@@ -40,6 +41,7 @@ const Navbar = () => {
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Vault', path: '/vault', icon: KeyRound },
     { name: 'Notes', path: '/notes', icon: FileText },
+    { name: 'Movies', path: '/movies', icon: Clapperboard },
     { name: 'Gym', path: '/gym', icon: Dumbbell },
     { name: 'Diet', path: '/diet', icon: Utensils },
   ];

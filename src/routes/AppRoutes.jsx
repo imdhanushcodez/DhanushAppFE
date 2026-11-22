@@ -9,6 +9,7 @@ import ResetPasswordPage from '../pages/ResetPasswordPage';
 import DashboardPage from '../pages/DashboardPage';
 import VaultPage from '../pages/VaultPage';
 import NotesPage from '../pages/NotesPage';
+import MoviesPage from '../pages/MoviesPage';
 import GymPage from '../pages/GymPage';
 import DietPage from '../pages/DietPage';
 import ProfilePage from '../pages/ProfilePage';
@@ -42,6 +43,7 @@ const AppRoutes = () => {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/vault" element={<VaultPage />} />
           <Route path="/notes" element={<NotesPage />} />
+          <Route path="/movies" element={<MoviesPage />} />
           <Route path="/gym" element={<GymPage />} />
           <Route path="/diet" element={<DietPage />} />
           <Route path="/profile" element={<ProfilePage />} />
