@@ -18,9 +18,9 @@ import NotFoundPage from '../pages/NotFoundPage';
 // Main App Layout for Protected Routes
 const AppLayout = () => {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
+    <div className="min-h-screen flex flex-col font-sans">
       <Navbar />
-      <main className="flex-1 pb-16">
+      <main className="flex-1 pb-16 pt-2">
         <Outlet />
       </main>
     </div>

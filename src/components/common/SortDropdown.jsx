@@ -10,7 +10,7 @@ const SortDropdown = ({ value, onChange, options = [] }) => {
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="pl-8 pr-8 py-2 text-sm bg-white border border-slate-200 rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-700 font-medium cursor-pointer transition-all"
+        className="pl-8 pr-8 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-700 dark:text-slate-200 font-medium cursor-pointer transition-all"
       >
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>

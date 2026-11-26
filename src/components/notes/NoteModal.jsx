@@ -55,7 +55,7 @@ const NoteModal = ({ isOpen, onClose, onSave, editingNote }) => {
     >
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
             Topic / Title <span className="text-rose-500">*</span>
           </label>
           <input
@@ -64,15 +64,15 @@ const NoteModal = ({ isOpen, onClose, onSave, editingNote }) => {
             placeholder="e.g. Project Ideas, Grocery List, Meeting Notes"
             value={formData.topic}
             onChange={handleChange}
-            className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-              errors.topic ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-indigo-500'
+            className={`w-full px-3.5 py-2 text-sm glass border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+              errors.topic ? 'border-rose-400/60 focus:border-rose-500' : 'border-slate-900/10 dark:border-white/10 focus:border-indigo-500'
             }`}
           />
           {errors.topic && <p className="text-xs text-rose-500 mt-1">{errors.topic}</p>}
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
             Notes <span className="text-rose-500">*</span>
           </label>
           <textarea
@@ -81,24 +81,24 @@ const NoteModal = ({ isOpen, onClose, onSave, editingNote }) => {
             placeholder="Type your notes here..."
             value={formData.content}
             onChange={handleChange}
-            className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
-              errors.content ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-indigo-500'
+            className={`w-full px-3.5 py-2 text-sm glass border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all ${
+              errors.content ? 'border-rose-400/60 focus:border-rose-500' : 'border-slate-900/10 dark:border-white/10 focus:border-indigo-500'
             }`}
           />
           {errors.content && <p className="text-xs text-rose-500 mt-1">{errors.content}</p>}
         </div>
 
-        <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+        <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 hover:bg-slate-900/10 dark:hover:bg-white/15 rounded-lg transition-colors"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-sm transition-colors"
+            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 btn-shine hover:bg-indigo-700 rounded-lg shadow-sm transition-colors"
           >
             {editingNote ? 'Update Note' : 'Save Note'}
           </button>

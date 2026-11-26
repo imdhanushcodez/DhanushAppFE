@@ -207,12 +207,12 @@ const MoviesPage = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-violet-50 text-violet-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-violet-500/10 dark:bg-violet-400/10 text-violet-600 dark:text-violet-400 flex items-center justify-center">
             <Clapperboard className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Movie Watchlist & Log</h1>
-            <p className="text-xs text-slate-500">Track movies to watch and log what you've seen with personal reviews & ratings</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">Movie Watchlist & Log</h1>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Track movies to watch and log what you've seen with personal reviews & ratings</p>
           </div>
         </div>
 
@@ -222,7 +222,7 @@ const MoviesPage = () => {
               setEditingMovie(null);
               setModalOpen(true);
             }}
-            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-100 transition-colors"
+            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-indigo-600 btn-shine rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-500/20 transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add Movie</span>
@@ -231,7 +231,7 @@ const MoviesPage = () => {
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+      <div className="glass p-4 rounded-3xl border border-slate-900/10 dark:border-white/10 shadow-xs space-y-3">
         <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-3">
           <SearchBar
             value={searchQuery}
@@ -244,7 +244,7 @@ const MoviesPage = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700"
+              className="pl-3 pr-8 py-2 text-xs font-medium bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700 dark:text-slate-200"
             >
               <option value="ALL">All Statuses</option>
               <option value="WANT_TO_WATCH">Want to Watch</option>
@@ -256,7 +256,7 @@ const MoviesPage = () => {
             <select
               value={genreFilter}
               onChange={(e) => setGenreFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700"
+              className="pl-3 pr-8 py-2 text-xs font-medium bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700 dark:text-slate-200"
             >
               <option value="ALL">All Genres</option>
               {genres.map((g) => (
@@ -270,7 +270,7 @@ const MoviesPage = () => {
             <select
               value={ratingFilter}
               onChange={(e) => setRatingFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700"
+              className="pl-3 pr-8 py-2 text-xs font-medium bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700 dark:text-slate-200"
             >
               <option value="ALL">All Ratings</option>
               <option value="5">5 Stars</option>
@@ -282,7 +282,7 @@ const MoviesPage = () => {
             <select
               value={dateFilter}
               onChange={(e) => setDateFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700"
+              className="pl-3 pr-8 py-2 text-xs font-medium bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700 dark:text-slate-200"
             >
               <option value="ALL">All Dates</option>
               <option value="today">Today</option>
@@ -319,9 +319,9 @@ const MoviesPage = () => {
           <p className="text-xs">Loading movies...</p>
         </div>
       ) : movies.length === 0 ? (
-        <div className="py-16 text-center bg-white rounded-2xl border border-dashed border-slate-200">
+        <div className="py-16 text-center glass rounded-3xl border border-dashed border-slate-900/10 dark:border-white/10">
           <Clapperboard className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-semibold text-slate-700">No movies found</h3>
+          <h3 className="text-base font-semibold text-slate-700 dark:text-slate-200">No movies found</h3>
           <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
             {searchQuery || activeFilters.length > 0
               ? 'Try adjusting your search query or filters.'
