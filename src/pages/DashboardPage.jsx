@@ -177,7 +177,7 @@ const DashboardPage = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Welcome banner */}
-      <div className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-indigo-100 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-indigo-700 via-indigo-600 to-violet-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-indigo-500/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-2">
             Personal Dashboard
@@ -196,7 +196,7 @@ const DashboardPage = () => {
               setEditingVault(null);
               setVaultModalOpen(true);
             }}
-            className="flex items-center space-x-1.5 px-4 py-2.5 bg-white text-indigo-700 text-xs font-semibold rounded-xl shadow-xs hover:bg-indigo-50 transition-colors"
+            className="flex items-center space-x-1.5 px-4 py-2.5 glass text-indigo-700 dark:text-indigo-300 text-xs font-semibold rounded-xl shadow-xs hover:bg-indigo-500/10 transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add Password</span>
@@ -234,14 +234,14 @@ const DashboardPage = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
               <KeyRound className="w-4 h-4" />
             </div>
-            <h2 className="text-lg font-bold text-slate-900">Passwords Vault</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">Passwords Vault</h2>
           </div>
           <Link
             to="/vault"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center space-x-1"
           >
             <span>Open Vault</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -249,8 +249,8 @@ const DashboardPage = () => {
         </div>
 
         {vaultEntries.length === 0 ? (
-          <div className="p-8 text-center bg-white rounded-2xl border border-dashed border-slate-200">
-            <p className="text-sm text-slate-500">No passwords saved yet</p>
+          <div className="p-8 text-center glass rounded-3xl border border-dashed border-slate-900/10 dark:border-white/10">
+            <p className="text-sm text-slate-500 dark:text-slate-400">No passwords saved yet</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -276,14 +276,14 @@ const DashboardPage = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-indigo-500/10 dark:bg-indigo-400/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
               <FileText className="w-4 h-4" />
             </div>
-            <h2 className="text-lg font-bold text-slate-900">Personal Notes</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">Personal Notes</h2>
           </div>
           <Link
             to="/notes"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center space-x-1"
           >
             <span>Open Notes</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -291,8 +291,8 @@ const DashboardPage = () => {
         </div>
 
         {notes.length === 0 ? (
-          <div className="p-8 text-center bg-white rounded-2xl border border-dashed border-slate-200">
-            <p className="text-sm text-slate-500">No notes yet</p>
+          <div className="p-8 text-center glass rounded-3xl border border-dashed border-slate-900/10 dark:border-white/10">
+            <p className="text-sm text-slate-500 dark:text-slate-400">No notes yet</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -318,14 +318,14 @@ const DashboardPage = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-lg bg-violet-50 text-violet-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-violet-500/10 dark:bg-violet-400/10 text-violet-600 dark:text-violet-400 flex items-center justify-center">
               <Clapperboard className="w-4 h-4" />
             </div>
-            <h2 className="text-lg font-bold text-slate-900">Movie Watchlist & Log</h2>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">Movie Watchlist & Log</h2>
           </div>
           <Link
             to="/movies"
-            className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1"
+            className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 flex items-center space-x-1"
           >
             <span>Open Movies</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -333,8 +333,8 @@ const DashboardPage = () => {
         </div>
 
         {movies.length === 0 ? (
-          <div className="p-8 text-center bg-white rounded-2xl border border-dashed border-slate-200">
-            <p className="text-sm text-slate-500">No movies in your watchlist yet</p>
+          <div className="p-8 text-center glass rounded-3xl border border-dashed border-slate-900/10 dark:border-white/10">
+            <p className="text-sm text-slate-500 dark:text-slate-400">No movies in your watchlist yet</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

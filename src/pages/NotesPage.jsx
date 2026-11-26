@@ -177,28 +177,28 @@ const NotesPage = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-2.5">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
             <FileText className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Personal Notes</h1>
-            <p className="text-xs text-slate-500">Capture ideas, logs, and important information</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">Personal Notes</h1>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Capture ideas, logs, and important information</p>
           </div>
         </div>
 
         <div className="flex items-center space-x-2">
           <button
             onClick={() => setImportOpen(true)}
-            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors shadow-xs"
+            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 glass border border-slate-900/10 dark:border-white/10 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors shadow-xs"
           >
-            <Upload className="w-3.5 h-3.5 text-slate-500" />
+            <Upload className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
             <span>Import</span>
           </button>
           <button
             onClick={handleExportCsv}
-            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors shadow-xs"
+            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 glass border border-slate-900/10 dark:border-white/10 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors shadow-xs"
           >
-            <Download className="w-3.5 h-3.5 text-slate-500" />
+            <Download className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400" />
             <span>Export</span>
           </button>
           <button
@@ -206,7 +206,7 @@ const NotesPage = () => {
               setEditingNote(null);
               setModalOpen(true);
             }}
-            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-100 transition-colors"
+            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-indigo-600 btn-shine rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-500/20 transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add Note</span>
@@ -215,7 +215,7 @@ const NotesPage = () => {
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-xs space-y-3">
+      <div className="glass p-4 rounded-3xl border border-slate-900/10 dark:border-white/10 shadow-xs space-y-3">
         <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
           <SearchBar
             value={searchQuery}
@@ -227,7 +227,7 @@ const NotesPage = () => {
             <select
               value={dateFilter}
               onChange={(e) => setDateFilter(e.target.value)}
-              className="pl-3 pr-8 py-2 text-xs font-medium bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700"
+              className="pl-3 pr-8 py-2 text-xs font-medium bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-700 dark:text-slate-200"
             >
               <option value="ALL">All Dates</option>
               <option value="today">Today</option>
@@ -266,9 +266,9 @@ const NotesPage = () => {
           <p className="text-xs">Loading notes...</p>
         </div>
       ) : notes.length === 0 ? (
-        <div className="py-16 text-center bg-white rounded-2xl border border-dashed border-slate-200">
+        <div className="py-16 text-center glass rounded-3xl border border-dashed border-slate-900/10 dark:border-white/10">
           <FileText className="w-10 h-10 text-slate-300 mx-auto mb-3" />
-          <h3 className="text-base font-semibold text-slate-700">No notes found</h3>
+          <h3 className="text-base font-semibold text-slate-700 dark:text-slate-200">No notes found</h3>
           <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
             {searchQuery || dateFilter !== 'ALL'
               ? 'Try adjusting your search or filters.'

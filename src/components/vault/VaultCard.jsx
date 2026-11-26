@@ -46,17 +46,17 @@ const VaultCard = ({ entry, onEdit, onDelete }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:shadow-md transition-all group">
+    <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 p-5 shadow-xs hover:shadow-md transition-all group">
       <div className="flex items-start justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
+          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 dark:bg-indigo-400/10 border border-indigo-500/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 font-bold">
             {entry.source ? entry.source.charAt(0).toUpperCase() : <Key className="w-5 h-5" />}
           </div>
           <div>
-            <h4 className="font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+            <h4 className="font-semibold text-slate-900 dark:text-slate-50 group-hover:text-indigo-600 dark:group-hover:text-indigo-300 transition-colors">
               {entry.source}
             </h4>
-            <p className="text-sm text-slate-500 font-mono select-all">
+            <p className="text-sm text-slate-500 dark:text-slate-400 font-mono select-all">
               {entry.loginId || entry.login_id}
             </p>
           </div>
@@ -66,14 +66,14 @@ const VaultCard = ({ entry, onEdit, onDelete }) => {
         <div className="flex items-center space-x-1">
           <button
             onClick={() => onEdit(entry)}
-            className="p-1.5 text-slate-400 hover:text-indigo-600 hover:bg-slate-50 rounded-lg transition-colors"
+            className="p-1.5 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300 hover:bg-white/50 dark:hover:bg-white/10 rounded-lg transition-colors"
             title="Edit password"
           >
             <Edit2 className="w-4 h-4" />
           </button>
           <button
             onClick={() => onDelete(entry)}
-            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+            className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"
             title="Delete password"
           >
             <Trash2 className="w-4 h-4" />
@@ -82,10 +82,10 @@ const VaultCard = ({ entry, onEdit, onDelete }) => {
       </div>
 
       {/* Password display & quick copy */}
-      <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+      <div className="mt-4 pt-3 border-t border-slate-900/10 dark:border-white/10 flex items-center justify-between">
         <div className="flex items-center space-x-2 font-mono text-sm">
           <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Password:</span>
-          <span className="text-slate-800 font-medium">
+          <span className="text-slate-800 dark:text-slate-100 font-medium">
             {loadingPassword
               ? 'Loading...'
               : showPassword
@@ -97,20 +97,20 @@ const VaultCard = ({ entry, onEdit, onDelete }) => {
         <div className="flex items-center space-x-1">
           <button
             onClick={handleToggleShow}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+            className="p-1.5 text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-900/10 dark:hover:bg-white/15 rounded-lg transition-colors"
             title={showPassword ? 'Hide password' : 'Show password'}
           >
             {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
           <button
             onClick={handleCopy}
-            className="flex items-center space-x-1 px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors"
+            className="flex items-center space-x-1 px-2.5 py-1 text-xs font-medium rounded-lg bg-slate-900/5 dark:bg-white/10 text-slate-700 dark:text-slate-200 hover:bg-indigo-500/10 hover:text-indigo-600 dark:hover:text-indigo-300 transition-colors"
             title="Copy password to clipboard"
           >
             {copied ? (
               <>
-                <Check className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="text-emerald-600 font-semibold">Copied!</span>
+                <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">Copied!</span>
               </>
             ) : (
               <>

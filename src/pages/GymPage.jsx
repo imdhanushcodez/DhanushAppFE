@@ -216,12 +216,12 @@ const GymPage = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-2.5">
-          <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-amber-500/10 dark:bg-amber-400/10 text-amber-600 dark:text-amber-400 flex items-center justify-center">
             <Dumbbell className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Gym Routine & Workout Plans</h1>
-            <p className="text-xs text-slate-500">Plan and track your progressive overload routines</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">Gym Routine & Workout Plans</h1>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Plan and track your progressive overload routines</p>
           </div>
         </div>
 
@@ -240,14 +240,14 @@ const GymPage = () => {
               setWorkoutFormErrors({});
               setAddWorkoutModalOpen(true);
             }}
-            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors shadow-xs"
+            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 glass border border-slate-900/10 dark:border-white/10 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create New Exercise</span>
           </button>
           <button
             onClick={() => setAddToPlanModalOpen(true)}
-            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-amber-600 rounded-xl hover:bg-amber-700 shadow-md shadow-amber-100 transition-colors"
+            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-amber-600 rounded-xl hover:bg-amber-700 shadow-md shadow-amber-500/20 transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add to {DAYS_OF_WEEK.find((d) => d.id === selectedDay)?.name}</span>
@@ -256,7 +256,7 @@ const GymPage = () => {
       </div>
 
       {/* Day Selector Tabs (1=Monday to 7=Sunday) */}
-      <div className="bg-white p-2 rounded-2xl border border-slate-200 shadow-xs flex overflow-x-auto space-x-1.5 scrollbar-none">
+      <div className="glass p-2 rounded-3xl border border-slate-900/10 dark:border-white/10 shadow-xs flex overflow-x-auto space-x-1.5 scrollbar-none">
         {DAYS_OF_WEEK.map((day) => {
           const dayPlanData = plan?.days?.find((p) => p.day === day.id);
           const count = dayPlanData?.entries?.length || 0;
@@ -270,7 +270,7 @@ const GymPage = () => {
               className={`flex-1 min-w-[100px] py-2.5 px-3 rounded-xl text-center text-xs font-medium transition-all ${
                 isSelected
                   ? 'bg-amber-500 text-white shadow-sm font-semibold'
-                  : 'text-slate-600 hover:bg-slate-50'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10'
               }`}
             >
               <div className="flex items-center justify-center space-x-1">
@@ -278,7 +278,7 @@ const GymPage = () => {
                 {isToday && (
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
-                      isSelected ? 'bg-white' : 'bg-amber-500'
+                      isSelected ? 'bg-white dark:bg-slate-800' : 'bg-amber-500'
                     }`}
                   />
                 )}
@@ -292,15 +292,15 @@ const GymPage = () => {
       </div>
 
       {/* Routine for selected day with dynamic category header (US-34) */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+      <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-900/10 dark:border-white/10">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">{currentDayHeaderTitle}</h2>
-            <p className="text-xs text-slate-500">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">{currentDayHeaderTitle}</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {currentDayPlan.length} {currentDayPlan.length === 1 ? 'exercise' : 'exercises'} in order
             </p>
           </div>
-          <span className="text-xs font-semibold px-2.5 py-1 bg-amber-50 text-amber-700 border border-amber-100 rounded-lg">
+          <span className="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 dark:bg-amber-400/10 text-amber-700 dark:text-amber-300 border border-amber-500/20 rounded-lg">
             Day {selectedDay} of 7
           </span>
         </div>
@@ -313,7 +313,7 @@ const GymPage = () => {
         ) : currentDayPlan.length === 0 ? (
           <div className="py-14 text-center">
             <Dumbbell className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-medium text-slate-700">No workout planned</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200">No workout planned</p>
             <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
               Click "+ Add to {DAYS_OF_WEEK.find((d) => d.id === selectedDay)?.name}" to choose an exercise from the library.
             </p>
@@ -323,30 +323,30 @@ const GymPage = () => {
             {currentDayPlan.map((entry, idx) => (
               <div
                 key={entry.entryId || idx}
-                className="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-start justify-between group hover:border-amber-300 transition-all"
+                className="p-4 bg-white/40 dark:bg-white/5 rounded-3xl border border-slate-900/10 dark:border-white/10 flex items-start justify-between group hover:border-amber-300 transition-all"
               >
                 <div className="flex items-start space-x-3">
                   {entry.imageUrl ? (
                     <img
                       src={entry.imageUrl}
                       alt={entry.name}
-                      className="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
+                      className="w-12 h-12 rounded-xl object-cover border border-slate-900/10 dark:border-white/10 shrink-0"
                     />
                   ) : (
-                    <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 flex items-center justify-center font-bold text-amber-600 text-xs shrink-0">
+                    <div className="w-8 h-8 rounded-lg glass border border-slate-900/10 dark:border-white/10 flex items-center justify-center font-bold text-amber-600 dark:text-amber-400 text-xs shrink-0">
                       #{idx + 1}
                     </div>
                   )}
                   <div>
                     <div className="flex items-center space-x-2">
-                      <h4 className="font-semibold text-slate-900 text-sm">{entry.name}</h4>
+                      <h4 className="font-semibold text-slate-900 dark:text-slate-50 text-sm">{entry.name}</h4>
                       {entry.category && (
-                        <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded">
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-amber-500/15 dark:bg-amber-400/15 text-amber-800 dark:text-amber-300 rounded">
                           {entry.category}
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center space-x-3 mt-1 text-xs text-slate-500">
+                    <div className="flex items-center space-x-3 mt-1 text-xs text-slate-500 dark:text-slate-400">
                       <span>{entry.reps} Reps</span>
                       {entry.weightKg && <span>• {entry.weightKg} kg</span>}
                     </div>
@@ -355,7 +355,7 @@ const GymPage = () => {
 
                 <button
                   onClick={() => handleRemoveEntry(entry.entryId)}
-                  className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"
                   title="Remove from day plan"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -367,11 +367,11 @@ const GymPage = () => {
       </div>
 
       {/* Shared Workouts Library (US-30, US-31, US-32) */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-900/10 dark:border-white/10">
           <div className="flex items-center space-x-2">
-            <Layers className="w-4 h-4 text-slate-500" />
-            <h3 className="text-sm font-bold text-slate-900">Shared Workout Library</h3>
+            <Layers className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+            <h3 className="text-sm font-bold text-slate-900 dark:text-slate-50">Shared Workout Library</h3>
           </div>
           <span className="text-xs text-slate-400">{workoutsLibrary.length} exercises available</span>
         </div>
@@ -385,11 +385,11 @@ const GymPage = () => {
             {workoutsLibrary.map((w) => (
               <div
                 key={w.id}
-                className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between"
+                className="p-3 bg-white/40 dark:bg-white/5 rounded-xl border border-slate-900/10 dark:border-white/10 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between">
-                    <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 bg-amber-100 text-amber-800 rounded">
+                    <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 bg-amber-500/15 dark:bg-amber-400/15 text-amber-800 dark:text-amber-300 rounded">
                       {w.category?.name || w.categoryName || 'Exercise'}
                     </span>
                     <div className="flex items-center space-x-1">
@@ -407,14 +407,14 @@ const GymPage = () => {
                           setWorkoutFormErrors({});
                           setAddWorkoutModalOpen(true);
                         }}
-                        className="p-1 text-slate-400 hover:text-indigo-600 rounded"
+                        className="p-1 text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-300 rounded"
                         title="Edit workout"
                       >
                         <Edit2 className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => handleDeleteWorkout(w)}
-                        className="p-1 text-slate-400 hover:text-rose-600 rounded"
+                        className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded"
                         title="Delete workout"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -425,11 +425,11 @@ const GymPage = () => {
                     <img
                       src={w.imageUrl}
                       alt={w.name}
-                      className="w-full h-24 object-cover rounded-lg mt-2 border border-slate-200"
+                      className="w-full h-24 object-cover rounded-lg mt-2 border border-slate-900/10 dark:border-white/10"
                     />
                   )}
-                  <h5 className="font-semibold text-slate-800 text-xs mt-2">{w.name}</h5>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <h5 className="font-semibold text-slate-800 dark:text-slate-100 text-xs mt-2">{w.name}</h5>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     {w.reps} reps {w.weightKg ? `• ${w.weightKg} kg` : ''}
                   </p>
                 </div>
@@ -447,13 +447,13 @@ const GymPage = () => {
       >
         <form onSubmit={handleSaveWorkout} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Category <span className="text-rose-500">*</span>
             </label>
             <select
               value={workoutForm.categoryId}
               onChange={(e) => setWorkoutForm({ ...workoutForm, categoryId: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+              className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
             >
               {categories.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -464,7 +464,7 @@ const GymPage = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Workout Name <span className="text-rose-500">*</span>
             </label>
             <input
@@ -472,8 +472,8 @@ const GymPage = () => {
               placeholder="e.g. Incline Bench Press"
               value={workoutForm.name}
               onChange={(e) => setWorkoutForm({ ...workoutForm, name: e.target.value })}
-              className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                workoutFormErrors.name ? 'border-rose-400' : 'border-slate-200'
+              className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                workoutFormErrors.name ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
               }`}
             />
             {workoutFormErrors.name && (
@@ -483,7 +483,7 @@ const GymPage = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Reps <span className="text-rose-500">*</span>
               </label>
               <input
@@ -491,8 +491,8 @@ const GymPage = () => {
                 min="1"
                 value={workoutForm.reps}
                 onChange={(e) => setWorkoutForm({ ...workoutForm, reps: e.target.value })}
-                className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                  workoutFormErrors.reps ? 'border-rose-400' : 'border-slate-200'
+                className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                  workoutFormErrors.reps ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
                 }`}
               />
               {workoutFormErrors.reps && (
@@ -501,7 +501,7 @@ const GymPage = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Weight (kg)
               </label>
               <input
@@ -511,8 +511,8 @@ const GymPage = () => {
                 placeholder="Optional"
                 value={workoutForm.weightKg}
                 onChange={(e) => setWorkoutForm({ ...workoutForm, weightKg: e.target.value })}
-                className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                  workoutFormErrors.weightKg ? 'border-rose-400' : 'border-slate-200'
+                className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                  workoutFormErrors.weightKg ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
                 }`}
               />
               {workoutFormErrors.weightKg && (
@@ -522,7 +522,7 @@ const GymPage = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Exercise Image (Optional)
             </label>
             <div className="flex items-center space-x-3">
@@ -530,7 +530,7 @@ const GymPage = () => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => setSelectedFile(e.target.files[0] || null)}
-                className="text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100"
+                className="text-xs text-slate-600 dark:text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-amber-50 file:text-amber-700 hover:file:bg-amber-100"
               />
               {workoutForm.imageUrl && !selectedFile && (
                 <span className="text-[11px] text-slate-400 flex items-center space-x-1">
@@ -541,11 +541,11 @@ const GymPage = () => {
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
             <button
               type="button"
               onClick={() => setAddWorkoutModalOpen(false)}
-              className="px-4 py-2 text-sm text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
+              className="px-4 py-2 text-sm text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 rounded-lg hover:bg-slate-900/10 dark:hover:bg-white/15 transition-colors"
             >
               Cancel
             </button>
@@ -570,16 +570,16 @@ const GymPage = () => {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Select Workout Exercise
             </label>
             {workoutsLibrary.length === 0 ? (
-              <p className="text-xs text-slate-500 py-2">No exercises available. Please create one first.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 py-2">No exercises available. Please create one first.</p>
             ) : (
               <select
                 value={selectedWorkoutId}
                 onChange={(e) => setSelectedWorkoutId(e.target.value)}
-                className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
               >
                 {workoutsLibrary.map((w) => (
                   <option key={w.id} value={w.id}>
@@ -590,11 +590,11 @@ const GymPage = () => {
             )}
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
             <button
               type="button"
               onClick={() => setAddToPlanModalOpen(false)}
-              className="px-4 py-2 text-sm text-slate-700 bg-slate-100 rounded-lg"
+              className="px-4 py-2 text-sm text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 rounded-lg"
             >
               Cancel
             </button>
@@ -618,13 +618,13 @@ const GymPage = () => {
         maxWidth="max-w-md"
       >
         <div className="flex items-start space-x-3 py-2">
-          <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <p className="text-sm text-slate-700">{alertModal.message}</p>
+          <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <p className="text-sm text-slate-700 dark:text-slate-200">{alertModal.message}</p>
         </div>
-        <div className="flex justify-end pt-4 border-t border-slate-100">
+        <div className="flex justify-end pt-4 border-t border-slate-900/10 dark:border-white/10">
           <button
             onClick={() => setAlertModal({ isOpen: false, title: '', message: '' })}
-            className="px-4 py-2 text-sm text-white bg-indigo-600 rounded-lg"
+            className="px-4 py-2 text-sm text-white bg-indigo-600 btn-shine rounded-lg"
           >
             OK
           </button>

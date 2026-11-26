@@ -219,12 +219,12 @@ const DietPage = () => {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-center space-x-2.5">
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
             <Utensils className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Diet & Nutrition Tracker</h1>
-            <p className="text-xs text-slate-500">Track meals, calories, and macros across the week</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">Diet & Nutrition Tracker</h1>
+            <p className="text-xs text-slate-500 dark:text-slate-400">Track meals, calories, and macros across the week</p>
           </div>
         </div>
 
@@ -245,14 +245,14 @@ const DietPage = () => {
               setFoodFormErrors({});
               setAddFoodModalOpen(true);
             }}
-            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors shadow-xs"
+            className="flex items-center space-x-1.5 px-3 py-2 text-xs font-medium text-slate-700 dark:text-slate-200 glass border border-slate-900/10 dark:border-white/10 rounded-xl hover:bg-white/50 dark:hover:bg-white/10 transition-colors shadow-xs"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Create New Food Item</span>
           </button>
           <button
             onClick={() => setAddToPlanModalOpen(true)}
-            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 rounded-xl hover:bg-emerald-700 shadow-md shadow-emerald-100 transition-colors"
+            className="flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-emerald-600 rounded-xl hover:bg-emerald-700 shadow-md shadow-emerald-500/20 transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>Add Meal to {DAYS_OF_WEEK.find((d) => d.id === selectedDay)?.name}</span>
@@ -261,7 +261,7 @@ const DietPage = () => {
       </div>
 
       {/* Day Selector */}
-      <div className="bg-white p-2 rounded-2xl border border-slate-200 shadow-xs flex overflow-x-auto space-x-1.5 scrollbar-none">
+      <div className="glass p-2 rounded-3xl border border-slate-900/10 dark:border-white/10 shadow-xs flex overflow-x-auto space-x-1.5 scrollbar-none">
         {DAYS_OF_WEEK.map((day) => {
           const dayPlanData = plan?.days?.find((p) => p.day === day.id);
           const count = dayPlanData?.entries?.length || 0;
@@ -275,7 +275,7 @@ const DietPage = () => {
               className={`flex-1 min-w-[100px] py-2.5 px-3 rounded-xl text-center text-xs font-medium transition-all ${
                 isSelected
                   ? 'bg-emerald-600 text-white shadow-sm font-semibold'
-                  : 'text-slate-600 hover:bg-slate-50'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-white/50 dark:hover:bg-white/10'
               }`}
             >
               <div className="flex items-center justify-center space-x-1">
@@ -283,7 +283,7 @@ const DietPage = () => {
                 {isToday && (
                   <span
                     className={`w-1.5 h-1.5 rounded-full ${
-                      isSelected ? 'bg-white' : 'bg-emerald-500'
+                      isSelected ? 'bg-white dark:bg-slate-800' : 'bg-emerald-500'
                     }`}
                   />
                 )}
@@ -298,30 +298,30 @@ const DietPage = () => {
 
       {/* Nutrition Summary Cards for the Day (US-44) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="p-5 bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200/60 rounded-2xl flex items-center justify-between">
+        <div className="p-5 bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/25 rounded-3xl flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-orange-500/15 dark:bg-orange-400/15 text-orange-600 dark:text-orange-400 flex items-center justify-center">
               <Flame className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-orange-600 uppercase tracking-wider">Total Energy</p>
-              <h3 className="text-2xl font-extrabold text-slate-900">
-                {dayCalories} <span className="text-sm font-normal text-slate-500">kcal</span>
+              <p className="text-xs font-semibold text-orange-600 dark:text-orange-400 uppercase tracking-wider">Total Energy</p>
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-slate-50">
+                {dayCalories} <span className="text-sm font-normal text-slate-500 dark:text-slate-400">kcal</span>
               </h3>
             </div>
           </div>
           <span className="text-xs text-slate-400 font-medium">Auto-calculated</span>
         </div>
 
-        <div className="p-5 bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200/60 rounded-2xl flex items-center justify-between">
+        <div className="p-5 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/25 rounded-3xl flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-emerald-500/15 dark:bg-emerald-400/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
               <Beef className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider">Total Protein</p>
-              <h3 className="text-2xl font-extrabold text-slate-900">
-                {dayProtein} <span className="text-sm font-normal text-slate-500">grams</span>
+              <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">Total Protein</p>
+              <h3 className="text-2xl font-extrabold text-slate-900 dark:text-slate-50">
+                {dayProtein} <span className="text-sm font-normal text-slate-500 dark:text-slate-400">grams</span>
               </h3>
             </div>
           </div>
@@ -330,13 +330,13 @@ const DietPage = () => {
       </div>
 
       {/* Meals Table for Selected Day */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+      <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-900/10 dark:border-white/10">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">
+            <h2 className="text-lg font-bold text-slate-900 dark:text-slate-50">
               {DAYS_OF_WEEK.find((d) => d.id === selectedDay)?.name}'s Meals
             </h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               {currentDayMeals.length} {currentDayMeals.length === 1 ? 'item' : 'items'} logged
             </p>
           </div>
@@ -350,13 +350,13 @@ const DietPage = () => {
         ) : currentDayMeals.length === 0 ? (
           <div className="py-16 text-center">
             <Utensils className="w-10 h-10 text-slate-300 mx-auto mb-2" />
-            <p className="text-sm font-medium text-slate-700">No meals planned for today</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-slate-200">No meals planned for today</p>
             <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
               Plan your food intake or click "+ Add Meal" to choose from the food library.
             </p>
           </div>
         ) : (
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-slate-900/10 dark:divide-white/10">
             {currentDayMeals.map((entry) => (
               <div key={entry.entryId || entry.id} className="py-3.5 flex items-center justify-between">
                 <div className="flex items-center space-x-3">
@@ -364,23 +364,23 @@ const DietPage = () => {
                     <img
                       src={entry.imageUrl}
                       alt={entry.dishName}
-                      className="w-12 h-12 rounded-xl object-cover border border-slate-200 shrink-0"
+                      className="w-12 h-12 rounded-xl object-cover border border-slate-900/10 dark:border-white/10 shrink-0"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 dark:bg-emerald-400/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
                       <Utensils className="w-5 h-5" />
                     </div>
                   )}
                   <div>
                     <div className="flex items-center space-x-2">
-                      <h4 className="font-semibold text-slate-800 text-sm">{entry.dishName}</h4>
+                      <h4 className="font-semibold text-slate-800 dark:text-slate-100 text-sm">{entry.dishName}</h4>
                       {entry.category && (
-                        <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded">
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-emerald-500/15 dark:bg-emerald-400/15 text-emerald-800 dark:text-emerald-300 rounded">
                           {entry.category}
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center space-x-3 mt-1 text-xs text-slate-500">
+                    <div className="flex items-center space-x-3 mt-1 text-xs text-slate-500 dark:text-slate-400">
                       <span>{entry.weightG}g serving</span>
                       <span>• {entry.calories} kcal</span>
                       <span>• {entry.proteinG}g protein</span>
@@ -391,7 +391,7 @@ const DietPage = () => {
 
                 <button
                   onClick={() => handleRemoveEntry(entry.entryId)}
-                  className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-500/10 rounded-lg transition-colors"
                   title="Remove meal"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -403,11 +403,11 @@ const DietPage = () => {
       </div>
 
       {/* Shared Food Library (US-38) */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+      <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 p-6 shadow-xs space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-900/10 dark:border-white/10">
           <div className="flex items-center space-x-2">
-            <Layers className="w-4 h-4 text-slate-500" />
-            <h3 className="text-sm font-bold text-slate-900">Shared Food Library</h3>
+            <Layers className="w-4 h-4 text-slate-500 dark:text-slate-400" />
+            <h3 className="text-sm font-bold text-slate-900 dark:text-slate-50">Shared Food Library</h3>
           </div>
           <span className="text-xs text-slate-400">{foodLibrary.length} items available</span>
         </div>
@@ -421,11 +421,11 @@ const DietPage = () => {
             {foodLibrary.map((f) => (
               <div
                 key={f.id}
-                className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between"
+                className="p-3 bg-white/40 dark:bg-white/5 rounded-xl border border-slate-900/10 dark:border-white/10 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-start justify-between">
-                    <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 bg-emerald-100 text-emerald-800 rounded">
+                    <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 bg-emerald-500/15 dark:bg-emerald-400/15 text-emerald-800 dark:text-emerald-300 rounded">
                       {f.categoryName || 'Food'}
                     </span>
                     <div className="flex items-center space-x-1">
@@ -445,14 +445,14 @@ const DietPage = () => {
                           setFoodFormErrors({});
                           setAddFoodModalOpen(true);
                         }}
-                        className="p-1 text-slate-400 hover:text-emerald-600 rounded"
+                        className="p-1 text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 rounded"
                         title="Edit food"
                       >
                         <Edit2 className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => handleDeleteFood(f)}
-                        className="p-1 text-slate-400 hover:text-rose-600 rounded"
+                        className="p-1 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded"
                         title="Delete food"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -463,11 +463,11 @@ const DietPage = () => {
                     <img
                       src={f.imageUrl}
                       alt={f.dishName}
-                      className="w-full h-24 object-cover rounded-lg mt-2 border border-slate-200"
+                      className="w-full h-24 object-cover rounded-lg mt-2 border border-slate-900/10 dark:border-white/10"
                     />
                   )}
-                  <h5 className="font-semibold text-slate-800 text-xs mt-2">{f.dishName}</h5>
-                  <p className="text-[11px] text-slate-500 mt-0.5">
+                  <h5 className="font-semibold text-slate-800 dark:text-slate-100 text-xs mt-2">{f.dishName}</h5>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
                     {f.weightG}g • {f.calories} kcal • {f.proteinG}g protein
                   </p>
                 </div>
@@ -485,13 +485,13 @@ const DietPage = () => {
       >
         <form onSubmit={handleSaveFood} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Category <span className="text-rose-500">*</span>
             </label>
             <select
               value={foodForm.categoryId}
               onChange={(e) => setFoodForm({ ...foodForm, categoryId: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+              className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
             >
               {categories.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -502,7 +502,7 @@ const DietPage = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Dish Name <span className="text-rose-500">*</span>
             </label>
             <input
@@ -510,8 +510,8 @@ const DietPage = () => {
               placeholder="e.g. Grilled Chicken Salad"
               value={foodForm.dishName}
               onChange={(e) => setFoodForm({ ...foodForm, dishName: e.target.value })}
-              className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                foodFormErrors.dishName ? 'border-rose-400' : 'border-slate-200'
+              className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                foodFormErrors.dishName ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
               }`}
             />
             {foodFormErrors.dishName && (
@@ -521,7 +521,7 @@ const DietPage = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Serving Weight (g) <span className="text-rose-500">*</span>
               </label>
               <input
@@ -529,8 +529,8 @@ const DietPage = () => {
                 min="1"
                 value={foodForm.weightG}
                 onChange={(e) => setFoodForm({ ...foodForm, weightG: e.target.value })}
-                className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                  foodFormErrors.weightG ? 'border-rose-400' : 'border-slate-200'
+                className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                  foodFormErrors.weightG ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
                 }`}
               />
               {foodFormErrors.weightG && (
@@ -539,7 +539,7 @@ const DietPage = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Calories (kcal) <span className="text-rose-500">*</span>
               </label>
               <input
@@ -547,8 +547,8 @@ const DietPage = () => {
                 min="0"
                 value={foodForm.calories}
                 onChange={(e) => setFoodForm({ ...foodForm, calories: e.target.value })}
-                className={`w-full px-3.5 py-2 text-sm bg-white border rounded-xl ${
-                  foodFormErrors.calories ? 'border-rose-400' : 'border-slate-200'
+                className={`w-full px-3.5 py-2 text-sm glass border rounded-xl ${
+                  foodFormErrors.calories ? 'border-rose-400' : 'border-slate-900/10 dark:border-white/10'
                 }`}
               />
               {foodFormErrors.calories && (
@@ -559,7 +559,7 @@ const DietPage = () => {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Protein (g)
               </label>
               <input
@@ -568,12 +568,12 @@ const DietPage = () => {
                 min="0"
                 value={foodForm.proteinG}
                 onChange={(e) => setFoodForm({ ...foodForm, proteinG: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                 Fiber (g)
               </label>
               <input
@@ -582,13 +582,13 @@ const DietPage = () => {
                 min="0"
                 value={foodForm.fiberG}
                 onChange={(e) => setFoodForm({ ...foodForm, fiberG: e.target.value })}
-                className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Dish Image (Optional)
             </label>
             <div className="flex items-center space-x-3">
@@ -596,7 +596,7 @@ const DietPage = () => {
                 type="file"
                 accept="image/*"
                 onChange={(e) => setSelectedFile(e.target.files[0] || null)}
-                className="text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
+                className="text-xs text-slate-600 dark:text-slate-300 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
               />
               {foodForm.imageUrl && !selectedFile && (
                 <span className="text-[11px] text-slate-400 flex items-center space-x-1">
@@ -607,11 +607,11 @@ const DietPage = () => {
             </div>
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
             <button
               type="button"
               onClick={() => setAddFoodModalOpen(false)}
-              className="px-4 py-2 text-sm text-slate-700 bg-slate-100 rounded-lg hover:bg-slate-200 transition-colors"
+              className="px-4 py-2 text-sm text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 rounded-lg hover:bg-slate-900/10 dark:hover:bg-white/15 transition-colors"
             >
               Cancel
             </button>
@@ -636,16 +636,16 @@ const DietPage = () => {
       >
         <div className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Select Food / Dish
             </label>
             {foodLibrary.length === 0 ? (
-              <p className="text-xs text-slate-500 py-2">No food items available. Please create one first.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 py-2">No food items available. Please create one first.</p>
             ) : (
               <select
                 value={selectedFoodId}
                 onChange={(e) => setSelectedFoodId(e.target.value)}
-                className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl"
+                className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl"
               >
                 {foodLibrary.map((f) => (
                   <option key={f.id} value={f.id}>
@@ -656,11 +656,11 @@ const DietPage = () => {
             )}
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
             <button
               type="button"
               onClick={() => setAddToPlanModalOpen(false)}
-              className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 rounded-lg"
+              className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 rounded-lg"
             >
               Cancel
             </button>
@@ -684,13 +684,13 @@ const DietPage = () => {
         maxWidth="max-w-md"
       >
         <div className="flex items-start space-x-3 py-2">
-          <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-          <p className="text-sm text-slate-700">{alertModal.message}</p>
+          <AlertCircle className="w-5 h-5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <p className="text-sm text-slate-700 dark:text-slate-200">{alertModal.message}</p>
         </div>
-        <div className="flex justify-end pt-4 border-t border-slate-100">
+        <div className="flex justify-end pt-4 border-t border-slate-900/10 dark:border-white/10">
           <button
             onClick={() => setAlertModal({ isOpen: false, title: '', message: '' })}
-            className="px-4 py-2 text-sm text-white bg-indigo-600 rounded-lg"
+            className="px-4 py-2 text-sm text-white bg-indigo-600 btn-shine rounded-lg"
           >
             OK
           </button>

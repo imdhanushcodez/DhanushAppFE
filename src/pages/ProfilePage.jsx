@@ -181,25 +181,25 @@ const ProfilePage = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Account & Profile</h1>
-        <p className="text-xs text-slate-500">Manage your credentials, personal details and security</p>
+        <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">Account & Profile</h1>
+        <p className="text-xs text-slate-500 dark:text-slate-400">Manage your credentials, personal details and security</p>
       </div>
 
       {successMsg && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center space-x-3 text-xs font-semibold text-emerald-800 animate-in fade-in">
-          <Check className="w-5 h-5 text-emerald-600 shrink-0" />
+        <div className="p-4 bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/25 rounded-3xl flex items-center space-x-3 text-xs font-semibold text-emerald-800 dark:text-emerald-300 animate-in fade-in">
+          <Check className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
           <span>{successMsg}</span>
         </div>
       )}
 
       {pageError && (
-        <div className="p-4 bg-rose-50 border border-rose-200 rounded-2xl flex items-center space-x-3 text-xs font-semibold text-rose-800 animate-in fade-in">
-          <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+        <div className="p-4 bg-rose-500/10 dark:bg-rose-400/10 border border-rose-500/25 rounded-3xl flex items-center space-x-3 text-xs font-semibold text-rose-800 dark:text-rose-300 animate-in fade-in">
+          <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0" />
           <span>{pageError}</span>
         </div>
       )}
 
-      <div className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+      <div className="glass rounded-3xl border border-slate-900/10 dark:border-white/10 shadow-xs overflow-hidden">
         {/* Cover & Avatar Header */}
         <div className="h-28 bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-500 relative">
           <div className="absolute -bottom-10 left-6 sm:left-8 flex items-end space-x-4">
@@ -208,16 +208,16 @@ const ProfilePage = () => {
                 <img
                   src={photoPreview}
                   alt="Profile"
-                  className="w-20 h-20 rounded-2xl object-cover ring-4 ring-white shadow-md bg-white"
+                  className="w-20 h-20 rounded-2xl object-cover ring-4 ring-white/70 dark:ring-white/20 shadow-md bg-white dark:bg-slate-800"
                 />
               ) : (
-                <div className="w-20 h-20 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-2xl ring-4 ring-white shadow-md">
+                <div className="w-20 h-20 rounded-3xl bg-slate-900/5 dark:bg-white/10 text-slate-600 dark:text-slate-300 flex items-center justify-center font-bold text-2xl ring-4 ring-white shadow-md">
                   {formData.name ? formData.name.charAt(0).toUpperCase() : <User className="w-8 h-8" />}
                 </div>
               )}
               <label
                 htmlFor="photo-upload"
-                className="absolute inset-0 bg-slate-900/40 rounded-2xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                className="absolute inset-0 bg-slate-900/40 rounded-3xl flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                 title="Change Photo"
               >
                 {photoUploading ? (
@@ -245,7 +245,7 @@ const ProfilePage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                   Full Name
                 </label>
                 <div className="relative">
@@ -258,7 +258,7 @@ const ProfilePage = () => {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-800"
+                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-800 dark:text-slate-100"
                   />
                 </div>
               </div>
@@ -266,7 +266,7 @@ const ProfilePage = () => {
               {/* Email (Read-only as per US-15 & US-16) */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
                     Email Address
                   </label>
                   <span className="text-[10px] text-slate-400 uppercase font-semibold">Fixed / Read-only</span>
@@ -279,14 +279,14 @@ const ProfilePage = () => {
                     type="email"
                     value={formData.email}
                     disabled
-                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-100 border border-slate-200 rounded-xl text-slate-500 cursor-not-allowed font-medium"
+                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 cursor-not-allowed font-medium"
                   />
                 </div>
               </div>
 
               {/* Mobile Number (Editable) */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                   Mobile Number <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
@@ -299,8 +299,8 @@ const ProfilePage = () => {
                     maxLength={10}
                     value={formData.mobile}
                     onChange={handleChange}
-                    className={`w-full pl-10 pr-3.5 py-2 text-sm bg-slate-50/50 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 ${
-                      errors.mobile ? 'border-rose-300 focus:border-rose-500' : 'border-slate-200 focus:border-indigo-500'
+                    className={`w-full pl-10 pr-3.5 py-2 text-sm bg-white/40 dark:bg-white/5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 dark:text-slate-100 ${
+                      errors.mobile ? 'border-rose-400/60 focus:border-rose-500' : 'border-slate-900/10 dark:border-white/10 focus:border-indigo-500'
                     }`}
                   />
                 </div>
@@ -309,14 +309,14 @@ const ProfilePage = () => {
 
               {/* Sex list (MALE, FEMALE, OTHER, PREFER_NOT_TO_SAY) */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                   Sex
                 </label>
                 <select
                   name="sex"
                   value={formData.sex}
                   onChange={handleChange}
-                  className="w-full px-3.5 py-2 text-sm bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 cursor-pointer"
+                  className="w-full px-3.5 py-2 text-sm bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 dark:text-slate-100 cursor-pointer"
                 >
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
@@ -327,7 +327,7 @@ const ProfilePage = () => {
 
               {/* Date of Birth */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
                   Date of Birth
                 </label>
                 <div className="relative">
@@ -340,7 +340,7 @@ const ProfilePage = () => {
                     max={new Date().toISOString().split('T')[0]}
                     value={formData.date_of_birth}
                     onChange={handleChange}
-                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-50/50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800"
+                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-white/40 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 dark:text-slate-100"
                   />
                 </div>
                 {errors.date_of_birth && <p className="text-xs text-rose-500 mt-1">{errors.date_of_birth}</p>}
@@ -349,7 +349,7 @@ const ProfilePage = () => {
               {/* Account Password section (shown only as dots) */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
                     Account Password
                   </label>
                   <button
@@ -359,7 +359,7 @@ const ProfilePage = () => {
                       setPwdForm({ currentPassword: '', newPassword: '', confirmPassword: '' });
                       setPwdModalOpen(true);
                     }}
-                    className="text-xs font-semibold text-indigo-600 hover:text-indigo-800"
+                    className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300"
                   >
                     Change Password
                   </button>
@@ -372,17 +372,17 @@ const ProfilePage = () => {
                     type="text"
                     value="••••••••••••"
                     disabled
-                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-100 border border-slate-200 rounded-xl text-slate-500 cursor-not-allowed font-mono tracking-widest"
+                    className="w-full pl-10 pr-3.5 py-2 text-sm bg-slate-900/5 dark:bg-white/10 border border-slate-900/10 dark:border-white/10 rounded-xl text-slate-500 dark:text-slate-400 cursor-not-allowed font-mono tracking-widest"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex justify-end pt-4 border-t border-slate-100">
+            <div className="flex justify-end pt-4 border-t border-slate-900/10 dark:border-white/10">
               <button
                 type="submit"
                 disabled={loading}
-                className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-100 transition-colors flex items-center space-x-1.5"
+                className="px-6 py-2.5 bg-indigo-600 btn-shine hover:bg-indigo-700 text-white font-semibold text-xs rounded-xl shadow-md shadow-indigo-500/20 transition-colors flex items-center space-x-1.5"
               >
                 {loading && <Loader2 className="w-4 h-4 animate-spin" />}
                 <span>Save Profile Changes</span>
@@ -396,14 +396,14 @@ const ProfilePage = () => {
       <Modal isOpen={pwdModalOpen} onClose={() => setPwdModalOpen(false)} title="Change Account Password">
         <form onSubmit={handleChangePassword} className="space-y-4">
           {pwdError && (
-            <div className="p-3 bg-rose-50 border border-rose-200 rounded-xl flex items-center space-x-2 text-xs text-rose-700">
+            <div className="p-3 bg-rose-500/10 dark:bg-rose-400/10 border border-rose-500/25 rounded-xl flex items-center space-x-2 text-xs text-rose-700 dark:text-rose-300">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{pwdError}</span>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Current Password <span className="text-rose-500">*</span>
             </label>
             <input
@@ -411,12 +411,12 @@ const ProfilePage = () => {
               placeholder="••••••••"
               value={pwdForm.currentPassword}
               onChange={(e) => setPwdForm({ ...pwdForm, currentPassword: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               New Password <span className="text-rose-500">*</span>
             </label>
             <input
@@ -424,12 +424,12 @@ const ProfilePage = () => {
               placeholder="Min 8 chars, 1 letter & 1 number"
               value={pwdForm.newPassword}
               onChange={(e) => setPwdForm({ ...pwdForm, newPassword: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider mb-1.5">
               Confirm New Password <span className="text-rose-500">*</span>
             </label>
             <input
@@ -437,22 +437,22 @@ const ProfilePage = () => {
               placeholder="Re-enter new password"
               value={pwdForm.confirmPassword}
               onChange={(e) => setPwdForm({ ...pwdForm, confirmPassword: e.target.value })}
-              className="w-full px-3.5 py-2 text-sm bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="w-full px-3.5 py-2 text-sm glass border border-slate-900/10 dark:border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             />
           </div>
 
-          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-100">
+          <div className="flex justify-end space-x-3 pt-3 border-t border-slate-900/10 dark:border-white/10">
             <button
               type="button"
               onClick={() => setPwdModalOpen(false)}
-              className="px-4 py-2 text-sm font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+              className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-900/5 dark:bg-white/10 hover:bg-slate-900/10 dark:hover:bg-white/15 rounded-lg transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={pwdLoading}
-              className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg transition-colors flex items-center space-x-1.5"
+              className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 btn-shine hover:bg-indigo-700 rounded-lg transition-colors flex items-center space-x-1.5"
             >
               {pwdLoading && <Loader2 className="w-4 h-4 animate-spin" />}
               <span>Update Password</span>
